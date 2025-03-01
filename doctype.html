@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restricted Cebu Map</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxmTnXTwHFMXx0ZLtJnrBz6GFNTVNlcSA"></script>
+    <script>
+        function initMap() {
+            // Define Cebu bounds (SW and NE corners)
+            const cebuBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(10.2, 123.7), // SW corner
+                new google.maps.LatLng(10.5, 124.0)  // NE corner
+            );
+
+            // Initialize map
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 10.3157, lng: 123.8854 },
+                zoom: 13,
+                restriction: {
+                    latLngBounds: cebuBounds,
+                    strictBounds: true // Ensures the user can't scroll outside the bounds
+                }
+            });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <div id="map" style="width: 100%; height: 100vh;"></div>
+</body>
+</html>
